@@ -9,53 +9,10 @@
     >
     <meta name="color-scheme" content="light dark">
     <title>Botão líquido do GitHub</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <script src="js/script.js?v=2" defer></script>
   </head>
   <body>
-    <svg
-      class="svg-definitions"
-      width="0"
-      height="0"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <defs>
-        <radialGradient
-          id="liquid-gradient"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(287.5 280) rotate(-29.0546) scale(689.807 1000)"
-        >
-          <stop offset="0" stop-color="#FFFFFF"></stop>
-          <stop offset="0.188423" stop-color="#1E10C5"></stop>
-          <stop offset="0.260417" stop-color="#9089E2"></stop>
-          <stop offset="0.328792" stop-color="#FCFCFE"></stop>
-          <stop offset="0.328892" stop-color="#F9F9FD"></stop>
-          <stop offset="0.328992" stop-color="#FFFFFF"></stop>
-          <stop offset="0.442708" stop-color="#B2B8E7"></stop>
-          <stop offset="0.537556" stop-color="#0E2DCB"></stop>
-          <stop offset="0.631738" stop-color="#FFFFFF"></stop>
-          <stop offset="0.725645" stop-color="#0017E9"></stop>
-          <stop offset="0.817779" stop-color="#4743EF"></stop>
-          <stop offset="0.84375" stop-color="#7D7BF4"></stop>
-          <stop offset="0.90569" stop-color="#FFFFFF"></stop>
-          <stop offset="1" stop-color="#0B06FC"></stop>
-        </radialGradient>
-
-        <symbol id="liquid-pill" viewBox="0 0 1030 280">
-          <rect
-            width="1030"
-            height="280"
-            rx="140"
-            fill="url(#liquid-gradient)"
-          ></rect>
-        </symbol>
-      </defs>
-    </svg>
-
     <main class="page-shell">
       <section class="component-preview" aria-labelledby="page-title">
         <h1 id="page-title" class="visually-hidden">
@@ -70,95 +27,210 @@
           rel="noopener noreferrer"
           aria-label="Abrir o repositório UI Layouts no GitHub em uma nova aba"
         >
-          <span class="button-glow" aria-hidden="true">
-            <span class="glow-base"></span>
-            <span class="liquid">
-              <span class="liquid-layer liquid-layer--1">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--2">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--3">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--4">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--5">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--6">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--7">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-            </span>
-          </span>
+          <span class="button-aura" aria-hidden="true"></span>
 
-          <span class="button-shadow" aria-hidden="true"></span>
+          <span class="button-surface" aria-hidden="true">
+            <svg
+              class="liquid-canvas"
+              viewBox="0 0 144 43"
+              preserveAspectRatio="none"
+              focusable="false"
+            >
+              <defs>
+                <linearGradient
+                  id="liquid-base-gradient"
+                  x1="-20"
+                  y1="48"
+                  x2="152"
+                  y2="-4"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <animate
+                    attributeName="x1"
+                    values="-20;18;-8;-20"
+                    dur="9s"
+                    repeatCount="indefinite"
+                  ></animate>
+                  <animate
+                    attributeName="x2"
+                    values="152;174;136;152"
+                    dur="9s"
+                    repeatCount="indefinite"
+                  ></animate>
+                  <stop offset="0" stop-color="#08008f">
+                    <animate
+                      attributeName="stop-color"
+                      values="#08008f;#1503b8;#0b0196;#08008f"
+                      dur="9s"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </stop>
+                  <stop offset="0.35" stop-color="#23188f">
+                    <animate
+                      attributeName="stop-color"
+                      values="#23188f;#382a9e;#1f168c;#23188f"
+                      dur="9s"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </stop>
+                  <stop offset="0.72" stop-color="#504b9f">
+                    <animate
+                      attributeName="stop-color"
+                      values="#504b9f;#625da9;#49449b;#504b9f"
+                      dur="9s"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </stop>
+                  <stop offset="1" stop-color="#8586bf">
+                    <animate
+                      attributeName="stop-color"
+                      values="#8586bf;#9c9ed0;#7d7eb9;#8586bf"
+                      dur="9s"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </stop>
+                </linearGradient>
 
-          <span class="button-visual" aria-hidden="true">
-            <span class="visual-base"></span>
-            <span class="visual-ink"></span>
-            <span class="liquid">
-              <span class="liquid-layer liquid-layer--1">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--2">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--3">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--4">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--5">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--6">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-              <span class="liquid-layer liquid-layer--7">
-                <svg viewBox="0 0 1030 280" preserveAspectRatio="none">
-                  <use href="#liquid-pill"></use>
-                </svg>
-              </span>
-            </span>
-            <span class="border-glow border-glow--soft"></span>
-            <span class="border-glow border-glow--soft"></span>
-            <span class="border-glow border-glow--wide"></span>
-            <span class="border-glow border-glow--medium"></span>
-            <span class="border-glow border-glow--medium"></span>
-            <span class="center-light"></span>
+                <radialGradient id="liquid-blue">
+                  <stop offset="0" stop-color="#1600ff" stop-opacity="0.65"></stop>
+                  <stop offset="0.48" stop-color="#1200d9" stop-opacity="0.4"></stop>
+                  <stop offset="1" stop-color="#1200d9" stop-opacity="0"></stop>
+                </radialGradient>
+
+                <radialGradient id="liquid-depth">
+                  <stop offset="0" stop-color="#000085" stop-opacity="1"></stop>
+                  <stop offset="0.78" stop-color="#000085" stop-opacity="0.98"></stop>
+                  <stop offset="1" stop-color="#000085" stop-opacity="0"></stop>
+                </radialGradient>
+
+                <radialGradient id="liquid-violet">
+                  <stop offset="0" stop-color="#8a84aa" stop-opacity="0.48"></stop>
+                  <stop offset="0.52" stop-color="#6f68a0" stop-opacity="0.18"></stop>
+                  <stop offset="1" stop-color="#6f68a0" stop-opacity="0"></stop>
+                </radialGradient>
+
+                <radialGradient id="liquid-silver">
+                  <stop offset="0" stop-color="#d8dbf4" stop-opacity="0.22"></stop>
+                  <stop offset="0.5" stop-color="#c2c6e7" stop-opacity="0.12"></stop>
+                  <stop offset="1" stop-color="#c2c6e7" stop-opacity="0"></stop>
+                </radialGradient>
+
+                <linearGradient
+                  id="surface-glass-gradient"
+                  x1="72"
+                  y1="0"
+                  x2="72"
+                  y2="43"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.02"></stop>
+                  <stop offset="0.46" stop-color="#ffffff" stop-opacity="0"></stop>
+                  <stop offset="1" stop-color="#05002c" stop-opacity="0.16"></stop>
+                </linearGradient>
+              </defs>
+
+              <rect
+                width="144"
+                height="43"
+                rx="10"
+                fill="url(#liquid-base-gradient)"
+              ></rect>
+
+              <ellipse
+                cx="-8"
+                cy="38"
+                rx="62"
+                ry="41"
+                fill="url(#liquid-blue)"
+              >
+                <animate
+                  attributeName="cx"
+                  values="-8;42;12;-8"
+                  dur="8s"
+                  repeatCount="indefinite"
+                ></animate>
+                <animate
+                  attributeName="cy"
+                  values="38;26;48;38"
+                  dur="8s"
+                  repeatCount="indefinite"
+                ></animate>
+              </ellipse>
+
+              <ellipse
+                cx="55"
+                cy="11"
+                rx="22"
+                ry="25"
+                fill="url(#liquid-violet)"
+              >
+                <animate
+                  attributeName="cx"
+                  values="55;108;42;55"
+                  dur="7.5s"
+                  repeatCount="indefinite"
+                ></animate>
+                <animate
+                  attributeName="cy"
+                  values="11;26;4;11"
+                  dur="7.5s"
+                  repeatCount="indefinite"
+                ></animate>
+              </ellipse>
+
+              <ellipse
+                cx="139"
+                cy="-2"
+                rx="72"
+                ry="52"
+                fill="url(#liquid-silver)"
+              >
+                <animate
+                  attributeName="cx"
+                  values="139;101;151;139"
+                  dur="11s"
+                  repeatCount="indefinite"
+                ></animate>
+                <animate
+                  attributeName="cy"
+                  values="-2;12;3;-2"
+                  dur="11s"
+                  repeatCount="indefinite"
+                ></animate>
+              </ellipse>
+
+              <ellipse
+                cx="55"
+                cy="48"
+                rx="38"
+                ry="34"
+                fill="url(#liquid-depth)"
+              >
+                <animate
+                  attributeName="cx"
+                  values="55;35;90;55"
+                  dur="10.5s"
+                  repeatCount="indefinite"
+                ></animate>
+                <animate
+                  attributeName="cy"
+                  values="48;36;46;48"
+                  dur="10.5s"
+                  repeatCount="indefinite"
+                ></animate>
+              </ellipse>
+
+              <rect
+                width="144"
+                height="43"
+                rx="10"
+                fill="url(#surface-glass-gradient)"
+              ></rect>
+            </svg>
+
+            <span class="surface-shimmer"></span>
+            <span class="surface-glass"></span>
+            <span class="surface-rim"></span>
           </span>
 
           <span class="button-content">

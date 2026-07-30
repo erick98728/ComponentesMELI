@@ -35,14 +35,24 @@ Não é necessário instalar Node.js, executar `npm install` ou gerar um build.
 
 ## Configuração
 
-As cores, o endereço aberto pelo botão e a velocidade da animação ficam no
-objeto `CONFIG`, no início de `js/script.js`.
+- O endereço aberto pelo botão fica em `CONFIG.repositoryUrl`, no início de
+  `js/script.js`.
+- Cores, dimensões, sombras e velocidades dos efeitos CSS ficam organizadas em
+  `css/styles.css`.
+- O gradiente líquido principal utiliza animações SVG nativas dentro de
+  `index.html`. Isso evita dependências e funciona mesmo quando o projeto é
+  aberto diretamente pelo arquivo.
 
-- `repositoryUrl`: endereço aberto pelo botão.
-- `idleCycleDuration`: duração do ciclo normal, em milissegundos.
-- `hoverCycleDuration`: duração do ciclo durante hover ou foco.
-- `maximumFrameRate`: limite de atualizações visuais por segundo.
-- `colors`: as 17 cores do gradiente original.
+## Arquitetura da animação
+
+A superfície possui um gradiente SVG local com quatro campos de cor animados.
+Como o gradiente está no mesmo SVG que o utiliza, o navegador atualiza cada
+quadro sem depender de referências globais ou cópias com `<use>`. Uma base em
+CSS mantém a aparência correta caso a animação SVG ainda não tenha iniciado.
+
+O brilho externo e o reflexo de vidro usam `@keyframes`. O JavaScript apenas
+controla a luz que acompanha o ponteiro e pausa a animação quando a página fica
+em segundo plano.
 
 ## Deploy na Vercel
 
