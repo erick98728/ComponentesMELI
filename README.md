@@ -24,7 +24,8 @@ arquivos futuros e não são necessárias para o funcionamento do Dock.
 
 ## Recursos preservados
 
-- Dez aplicativos, cores e gradiente originais
+- Cinco aplicativos com nomes em português
+- Superfície monocromática consistente, sem cores individuais
 - Ampliação dos ícones conforme a distância do cursor
 - Movimento elástico e retorno suave
 - Elevação, brilho e escala no hover
@@ -35,7 +36,7 @@ arquivos futuros e não são necessárias para o funcionamento do Dock.
 - Fundo translúcido com blur, borda e sombra
 - Navegação por teclado e foco visível
 - Respeito a `prefers-reduced-motion`
-- Rolagem horizontal em telas pequenas sem remover itens
+- Layout responsivo sem remover os cinco itens
 
 ## Implementação
 
