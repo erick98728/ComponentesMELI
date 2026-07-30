@@ -1,0 +1,469 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+  --page-background: #080a0f;
+  --page-glow: rgba(73, 85, 133, 0.22);
+  --dock-background: rgba(243, 244, 246, 0.26);
+  --dock-border: rgba(255, 255, 255, 0.2);
+  --dock-shadow: rgba(0, 0, 0, 0.42);
+  --tooltip-background: rgba(31, 41, 55, 0.9);
+  --text-primary: #ffffff;
+  --focus-ring: rgba(191, 219, 254, 0.96);
+  --item-base-size: 50px;
+  --item-size: var(--item-base-size);
+  --dock-gap: 16px;
+  --tile-radius: 16px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  min-height: 100%;
+  background: var(--page-background);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 50% 58%, var(--page-glow), transparent 32rem),
+    linear-gradient(145deg, #0d1019 0%, var(--page-background) 58%, #050609 100%);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Page layout
+   ========================================================================== */
+
+.page {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: 2rem;
+}
+
+.dock-demo {
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+
+.dock-viewport {
+  width: 100%;
+  max-width: 52rem;
+  padding: 5.25rem 1rem 1.75rem;
+  margin-block: -5.25rem -1.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+}
+
+.dock-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   Glass dock
+   ========================================================================== */
+
+.dock {
+  position: relative;
+  width: max-content;
+  height: 80px;
+  padding: 0 16px 14px;
+  margin-inline: auto;
+  border: 2px solid var(--dock-border);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), transparent 48%),
+    var(--dock-background);
+  box-shadow:
+    0 20px 32px -12px var(--dock-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  animation: dock-enter 760ms cubic-bezier(0.16, 1.24, 0.3, 1) 100ms both;
+  isolation: isolate;
+}
+
+.dock::before {
+  position: absolute;
+  z-index: -1;
+  inset: 45% 8% -32%;
+  border-radius: 50%;
+  background: rgba(96, 165, 250, 0.2);
+  content: "";
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.dock-list {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  gap: var(--dock-gap);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ==========================================================================
+   Dock items
+   ========================================================================== */
+
+.dock-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--item-size);
+  height: var(--item-size);
+  will-change: width, height;
+}
+
+.dock-button {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: var(--tile-radius);
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.dock-button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 5px;
+}
+
+.dock-tile {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--tile-radius);
+  box-shadow:
+    0 10px 16px -6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transform: translateY(0) scale(1);
+  transform-origin: center bottom;
+  transition:
+    transform 380ms cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    filter 180ms ease;
+  will-change: transform;
+}
+
+.dock-tile::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 58%);
+  content: "";
+  opacity: 0.1;
+  transition: opacity 200ms ease;
+}
+
+.dock-button:hover .dock-tile,
+.dock-button:focus-visible .dock-tile {
+  filter: saturate(1.06) brightness(1.04);
+  transform: translateY(-8px);
+}
+
+.dock-button:hover .dock-tile::before,
+.dock-button:focus-visible .dock-tile::before {
+  opacity: 0.3;
+}
+
+.dock-item.is-pressed .dock-tile {
+  transform: translateY(2px) scale(0.95);
+  transition-duration: 110ms;
+}
+
+.dock-tile--finder {
+  background: #3b82f6;
+}
+
+.dock-tile--home {
+  background: #4b5563;
+}
+
+.dock-tile--mail {
+  background: #2563eb;
+}
+
+.dock-tile--calendar {
+  background: #ef4444;
+}
+
+.dock-tile--camera {
+  background: #1f2937;
+}
+
+.dock-tile--music {
+  background: linear-gradient(135deg, #ec4899, #9333ea);
+}
+
+.dock-tile--messages {
+  background: #22c55e;
+}
+
+.dock-tile--safari {
+  background: #60a5fa;
+}
+
+.dock-tile--notes {
+  background: #facc15;
+}
+
+.dock-tile--settings {
+  background: #6b7280;
+}
+
+.dock-icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: scale(1);
+  transition: transform 380ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.dock-button:hover .dock-icon,
+.dock-button:focus-visible .dock-icon {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   Tooltip and active indicator
+   ========================================================================== */
+
+.dock-tooltip {
+  position: absolute;
+  z-index: 3;
+  top: -48px;
+  left: 50%;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: var(--tooltip-background);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px) scale(0.8);
+  transform-origin: center bottom;
+  transition:
+    opacity 180ms ease,
+    transform 330ms cubic-bezier(0.18, 0.89, 0.32, 1.2);
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.dock-button:hover .dock-tooltip,
+.dock-button:focus-visible .dock-tooltip {
+  opacity: 1;
+  transform: translate(-50%, -20px) scale(1);
+}
+
+.dock-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  opacity: 0.7;
+  transform: translateX(-50%) scale(1);
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.dock-item.is-pressed .dock-indicator {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.5);
+}
+
+/* ==========================================================================
+   Motion
+   ========================================================================== */
+
+@keyframes dock-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-launch {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  45% {
+    transform: translateY(-7px);
+  }
+}
+
+.dock-item.is-launched .dock-icon {
+  animation: icon-launch 360ms cubic-bezier(0.22, 0.75, 0.34, 1);
+}
+
+/* ==========================================================================
+   Responsive and accessibility states
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+  :root {
+    --dock-gap: 12px;
+  }
+
+  .page {
+    padding-inline: 0.75rem;
+  }
+
+  .dock-viewport {
+    max-width: calc(100vw - 1rem);
+    padding-inline: 0.5rem;
+  }
+
+  .dock {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 30rem) {
+  :root {
+    --dock-gap: 10px;
+    --item-base-size: 46px;
+  }
+
+  .dock {
+    height: 74px;
+    padding-inline: 12px;
+    padding-bottom: 12px;
+    border-radius: 22px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .dock-button:hover .dock-tile {
+    transform: none;
+  }
+
+  .dock-button:hover .dock-tooltip {
+    opacity: 0;
+  }
+
+  .dock-button:focus-visible .dock-tile {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock,
+  .dock-icon {
+    animation: none;
+  }
+
+  .dock {
+    opacity: 1;
+    transform: none;
+  }
+
+  .dock-tile,
+  .dock-icon,
+  .dock-tooltip,
+  .dock-indicator {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .dock {
+    border: 2px solid CanvasText;
+    background: Canvas;
+  }
+
+  .dock-tile {
+    border: 1px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+}
