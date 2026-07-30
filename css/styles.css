@@ -233,43 +233,43 @@ button {
   transition-duration: 110ms;
 }
 
-.dock-tile--finder {
+.dock-tile--Arquivos {
   background: #3b82f6;
 }
 
-.dock-tile--home {
+.dock-tile--Home {
   background: #4b5563;
 }
 
-.dock-tile--mail {
+.dock-tile--Email {
   background: #2563eb;
 }
 
-.dock-tile--calendar {
+.dock-tile--Calendário {
   background: #ef4444;
 }
 
-.dock-tile--camera {
+.dock-tile--Camera {
   background: #1f2937;
 }
 
-.dock-tile--music {
+.dock-tile--Musica {
   background: linear-gradient(135deg, #ec4899, #9333ea);
 }
 
-.dock-tile--messages {
+.dock-tile--Mensagens {
   background: #22c55e;
 }
 
-.dock-tile--safari {
+.dock-tile--Navegador {
   background: #60a5fa;
 }
 
-.dock-tile--notes {
+.dock-tile--Notas {
   background: #facc15;
 }
 
-.dock-tile--settings {
+.dock-tile--Configurações {
   background: #6b7280;
 }
 
